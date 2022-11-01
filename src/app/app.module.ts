@@ -13,6 +13,7 @@ import { EffectsModule } from '@ngrx/effects';
 import { GuitarComponent } from './guitar/guitar.component';
 import { GuitarsListComponent } from './guitars-list/guitars-list.component';
 
+
 @NgModule({
   declarations: [AppComponent, HomeComponent, HeaderComponent, GuitarComponent, GuitarsListComponent],
   imports: [

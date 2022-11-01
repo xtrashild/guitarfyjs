@@ -9,7 +9,7 @@ import { AddToCart, RemoveFromCart } from '../store/actions';
   templateUrl: './guitar.component.html',
   styleUrls: ['./guitar.component.scss'],
 })
-export class GuitarComponent implements OnInit {
+export class GuitarComponent {
   constructor(private store: Store<{ items: []; cart: [] }>) {}
   inCart: boolean = false;
 
@@ -24,6 +24,4 @@ export class GuitarComponent implements OnInit {
   }
 
   @Input() guitar: Guitar;
-
-  ngOnInit(): void {}
 }

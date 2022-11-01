@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { select, Store } from '@ngrx/store';
+import { EMPTY } from 'rxjs';
+import { Observable } from 'rxjs/internal/Observable';
+import { map, tap } from 'rxjs/operators';
 import { Guitar } from '../models/guitar.model';
 import { GetItems } from '../store/actions';
 
@@ -10,9 +13,12 @@ import { GetItems } from '../store/actions';
 })
 export class HomeComponent implements OnInit {
   bannersIndex: number[] = [1, 2, 3, 4];
-  items: Guitar[] = [];
+  items$: Observable<Guitar[]>;
   constructor(private store: Store<any>) {
-    store.pipe(select('shop')).subscribe((state) => (this.items = state.items));
+    this.items$ = store.pipe(
+      select('shop'),
+      map((state) => state.items)
+    );
   }
 
   ngOnInit(): void {
